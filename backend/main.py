@@ -92,7 +92,7 @@ class ZoneOut(BaseModel):
     record_count: int
     created_at: datetime
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class RecordCreate(BaseModel):
     name: str
@@ -118,7 +118,7 @@ class RecordOut(BaseModel):
     created_at: datetime
     updated_at: datetime
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class PaginatedZones(BaseModel):
     items: List[ZoneOut]
@@ -306,7 +306,7 @@ def update_record(zone_id: str, record_id: str, payload: RecordUpdate, db: Sessi
     record = db.query(DNSRecord).filter(DNSRecord.zone_id == zone_id, DNSRecord.id == record_id).first()
     if not record:
         raise HTTPException(status_code=404, detail="Record not found")
-    for field, value in payload.dict(exclude_none=True).items():
+    for field, value in payload.model_dump(exclude_none=True).items():
         setattr(record, field, value)
     record.updated_at = datetime.utcnow()
     db.commit()
