@@ -4,7 +4,7 @@ A full-stack clone of the AWS Route53 DNS management console, built with Next.js
 
 ## Live Demo
 
-> **Frontend:** [Deploy to Vercel] | **Backend:** [Deploy to Render]
+> **Frontend:** [https://your-vercel-url.vercel.app](https://aws-route53-clone-five.vercel.app/) | **Backend:** [https://aws-route53-clone-qgle.onrender.com](https://aws-route53-clone-qgle.onrender.com)
 
 **Demo credentials:** `admin` / `admin123`
 
